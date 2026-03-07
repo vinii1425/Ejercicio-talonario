@@ -4,5 +4,6 @@ public class talonario {
 	
 	int id;
 	String Canet;
-
+	String Descripcion;
+	String Fecha;
 }
