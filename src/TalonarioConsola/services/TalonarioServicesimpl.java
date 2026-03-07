@@ -1,17 +1,38 @@
 package TalonarioConsola.services;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import TalonarioConsola.model.Talonario;
 
 public class TalonarioServicesimpl implements iTalonarioService{
+	
+	List<Talonario> talonarios = null;
+	
+	
+
+	public TalonarioServicesimpl() {
+		talonarios = new LinkedList<>();
+	}
 
 	@Override
 	public boolean guardar(Talonario talonario) {
-		// TODO Auto-generated method stub
-		return false;
+	
+		talonarios.add(talonario);
+		
+		return true;
 	}
 
 	@Override
 	public Talonario recuperar(Talonario talonario) {
+		
+		
+		
+		return null;
+	}
+	
+	@Override
+	public List<Talonario> recuperarTalonarios() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -27,6 +48,8 @@ public class TalonarioServicesimpl implements iTalonarioService{
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	
 
 	
 	
