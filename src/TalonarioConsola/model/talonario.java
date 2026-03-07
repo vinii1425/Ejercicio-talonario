@@ -1,6 +1,6 @@
 package TalonarioConsola.model;
 
-public class talonario {
+public class Talonario {
 	
 	int id;
 	String Canet;
