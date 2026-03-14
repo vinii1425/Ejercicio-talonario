@@ -26,15 +26,13 @@ public class TalonarioServicesimpl implements iTalonarioService{
 	@Override
 	public Talonario recuperar(Talonario talonario) {
 		
-		
-		
-		return null;
+		return talonarios.get(0);
 	}
 	
 	@Override
 	public List<Talonario> recuperarTalonarios() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return talonarios;
 	}
 
 	@Override
