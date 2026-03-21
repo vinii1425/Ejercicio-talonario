@@ -1,38 +1,62 @@
 package TalonarioConsola.services;
 
-import java.util.LinkedList;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.List;
 
+import TalonarioConsola.conexion.ConexionMySQL;
 import TalonarioConsola.model.Talonario;
 
-public class TalonarioServicesimpl implements iTalonarioService{
-	
-	List<Talonario> talonarios = null;
-	
-	
+public class TalonarioServicesimpl implements iTalonarioService {
 
-	public TalonarioServicesimpl() {
-		talonarios = new LinkedList<>();
-	}
+    @Override
+    public boolean guardar(Talonario talonario) {
+        boolean hecho = false;
 
-	@Override
-	public boolean guardar(Talonario talonario) {
-	
-		talonarios.add(talonario);
-		
-		return true;
-	}
+        ConexionMySQL conexion = new ConexionMySQL();
+        Connection con = null;
+        PreparedStatement ps;
+
+        String sql = "INSERT INTO talonario(carnet, descripcion, fecha, estado) values(?,?,?,?)";
+
+        try {
+            con = conexion.getConexion();
+            ps = con.prepareStatement(sql);
+
+            ps.setString(1, talonario.getCarnet());
+            ps.setString(2, talonario.getDescripcion());
+            ps.setString(3, talonario.getFecha());
+            ps.setString(4, talonario.getEstado());
+
+            ps.execute();
+            hecho = true;
+
+        } catch (SQLException e) {
+            System.out.println(e);
+
+        } finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+
+        return hecho;
+    }
 
 	@Override
 	public Talonario recuperar(Talonario talonario) {
-		
-		return talonarios.get(0);
+		// TODO Auto-generated method stub
+		return null;
 	}
-	
+
 	@Override
 	public List<Talonario> recuperarTalonarios() {
-		
-		return talonarios;
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
@@ -46,9 +70,4 @@ public class TalonarioServicesimpl implements iTalonarioService{
 		// TODO Auto-generated method stub
 		return false;
 	}
-
-	
-
-	
-	
 }
