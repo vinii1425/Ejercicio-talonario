@@ -9,7 +9,7 @@ public interface iTalonarioService {
 	public boolean guardar(Talonario talonario);
 	public Talonario recuperar(Talonario talonario);
 	public List<Talonario> recuperarTalonarios();
-	public Talonario modificar(Talonario talonario);
+	public boolean modificar(Talonario talonario);
 	public boolean eliminar(Talonario talonario);
 
 }
